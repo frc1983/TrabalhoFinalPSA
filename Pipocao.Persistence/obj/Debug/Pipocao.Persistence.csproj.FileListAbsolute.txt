@@ -1,0 +1,10 @@
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\obj\Debug\Pipocao.Persistence.csprojResolveAssemblyReference.cache
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\bin\Debug\Pipocao.Persistence.dll.config
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\bin\Debug\Pipocao.Persistence.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\bin\Debug\Pipocao.Persistence.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\bin\Debug\EntityFramework.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\bin\Debug\EntityFramework.SqlServer.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\bin\Debug\EntityFramework.xml
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\bin\Debug\EntityFramework.SqlServer.xml
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\obj\Debug\Pipocao.Persistence.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Persistence\obj\Debug\Pipocao.Persistence.pdb

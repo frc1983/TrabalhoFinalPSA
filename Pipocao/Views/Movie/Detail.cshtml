@@ -1,0 +1,128 @@
+﻿@model TMDBService.Models.Movie
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<fieldset>
+    <legend>Movie</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.adult)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.adult)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.backdrop_path)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.backdrop_path)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.original_language)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.original_language)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.original_title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.original_title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.overview)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.overview)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.release_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.release_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.poster_path)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.poster_path)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.popularity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.popularity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.video)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.video)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vote_average)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vote_average)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vote_count)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vote_count)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.revenue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.revenue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.runtime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.runtime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tagline)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tagline)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
