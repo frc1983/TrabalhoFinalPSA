@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipocao.Web", "Pipocao\Pipo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipocao.Persistence", "Pipocao.Persistence\Pipocao.Persistence.csproj", "{EE4F5BE2-7483-4E80-9765-97A2F34E3642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMDBService", "C:\Users\Fabio\Desktop\Pipocao\TMDBService\TMDBService.csproj", "{4E6BBECA-1B0B-455B-9C2A-AE9D3EDF3CCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipocao.TMDBService", "TMDBService\Pipocao.TMDBService.csproj", "{4E6BBECA-1B0B-455B-9C2A-AE9D3EDF3CCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

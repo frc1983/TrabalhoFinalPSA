@@ -14,7 +14,12 @@
         </span>
         <img src="@item.poster_path" class="image-movie-list" />
         <div class="description-movie-list">
-            <a href="" >Adicionar na minha lista</a>
+            @{
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <a href="" class="add-in-collection">Adicionar na minha lista</a>
+                }
+            }
 
             @Html.LabelFor(modelItem => item.release_date)
             @{

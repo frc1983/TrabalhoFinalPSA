@@ -324,9 +324,9 @@
       <Project>{ee4f5be2-7483-4e80-9765-97a2f34e3642}</Project>
       <Name>Pipocao.Persistence</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Fabio\Desktop\Pipocao\TMDBService\TMDBService.csproj">
+    <ProjectReference Include="..\TMDBService\Pipocao.TMDBService.csproj">
       <Project>{4e6bbeca-1b0b-455b-9c2a-ae9d3edf3cce}</Project>
-      <Name>TMDBService</Name>
+      <Name>Pipocao.TMDBService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

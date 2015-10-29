@@ -791,3 +791,18 @@ tr.pager td {
     width: 74%;
     float: left;
 }
+
+    .description-movie-list .add-in-collection {
+        float: right;
+        border: 1px solid red;
+        padding: 10px 15px;
+        font-size: 20px;
+        background-color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .description-movie-list .add-in-collection:hover {
+        color: white;
+        background-color: red;
+        border: 1px solid white;
+    }

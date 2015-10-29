@@ -10,14 +10,22 @@ namespace Pipocao.Persistence
     public partial class DatabaseContext : DbContext
     {
         public DatabaseContext() : base("name=DatabaseContext")
-        {            
+        {
+            Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseAlways<DatabaseContext>());
         }
 
-        public virtual DbSet<User> USER { get; set; }
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<UserCollection> UserCollection { get; set; }
+        public virtual DbSet<Review> Review { get; set; }
+        public virtual DbSet<Movie> Movie { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new UserMap()); 
+            modelBuilder.Configurations.Add(new UserMap());
+            modelBuilder.Configurations.Add(new UserCollectionMap());
+            modelBuilder.Configurations.Add(new ReviewMap());
+            modelBuilder.Configurations.Add(new MovieMap());
         }
+
     }
 }

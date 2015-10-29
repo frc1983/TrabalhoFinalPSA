@@ -12,7 +12,6 @@ namespace Pipocao.Database.Model.Mapping
             this.HasKey(t => t.Id);
 
             this.Property(p => p.Id).
-                HasColumnName("Id").
                 HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).
                 IsRequired();
 

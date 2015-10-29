@@ -30,7 +30,7 @@ namespace Pipocao.Models
         {
             using (var ctx = new DatabaseContext())
             {
-                var user = ctx.USER
+                var user = ctx.User
                     .Where(x => x.Email.ToLower().Equals(this.Email.ToLower()) && x.Password.Equals(this.Password))
                     .FirstOrDefault();
 
@@ -64,7 +64,7 @@ namespace Pipocao.Models
                 u.Email = this.Email;
                 u.Password = this.Password;
 
-                ctx.USER.Add(u);
+                ctx.User.Add(u);
                 ctx.SaveChanges();
             }
         }
