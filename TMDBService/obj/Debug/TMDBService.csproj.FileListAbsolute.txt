@@ -1,0 +1,8 @@
+D:\Projetos\Pipocao\TMDBService\bin\Debug\TMDBService.dll
+D:\Projetos\Pipocao\TMDBService\bin\Debug\TMDBService.pdb
+D:\Projetos\Pipocao\TMDBService\bin\Debug\Newtonsoft.Json.dll
+D:\Projetos\Pipocao\TMDBService\bin\Debug\System.Net.Http.Formatting.dll
+D:\Projetos\Pipocao\TMDBService\bin\Debug\Newtonsoft.Json.xml
+D:\Projetos\Pipocao\TMDBService\bin\Debug\System.Net.Http.Formatting.xml
+D:\Projetos\Pipocao\TMDBService\obj\Debug\TMDBService.dll
+D:\Projetos\Pipocao\TMDBService\obj\Debug\TMDBService.pdb
