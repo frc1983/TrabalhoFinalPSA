@@ -14,7 +14,7 @@ namespace Pipocao.Persistence
         {
             //Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseAlways<DatabaseContext>());
             //Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseIfModelChanges<DatabaseContext>());
-            Database.SetInitializer<DatabaseContext>(new DontDropDbJustCreateTablesIfModelChanged<DatabaseContext>());
+            Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<DatabaseContext>());
         }
 
         public virtual DbSet<User> User { get; set; }
