@@ -89,4 +89,3 @@ D:\PUCRS\PSA\Pipocao\Pipocao\bin\System.Web.Http.WebHost.dll
 D:\PUCRS\PSA\Pipocao\Pipocao\bin\System.Net.Http.Formatting.xml
 D:\PUCRS\PSA\Pipocao\Pipocao\bin\System.Web.Http.xml
 D:\PUCRS\PSA\Pipocao\Pipocao\bin\System.Web.Http.WebHost.xml
-D:\PUCRS\PSA\Pipocao\Pipocao\bin\WebActivator.dll

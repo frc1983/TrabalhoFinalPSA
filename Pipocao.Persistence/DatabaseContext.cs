@@ -6,7 +6,6 @@ namespace Pipocao.Persistence
     using System.Linq;
     using Pipocao.Persistence.Model;
     using Pipocao.Database.Model.Mapping;
-    using Devtalk.EF.CodeFirst;
 
     public partial class DatabaseContext : DbContext
     {
@@ -14,7 +13,6 @@ namespace Pipocao.Persistence
         {
             //Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseAlways<DatabaseContext>());
             //Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseIfModelChanges<DatabaseContext>());
-            Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<DatabaseContext>());
         }
 
         public virtual DbSet<User> User { get; set; }
