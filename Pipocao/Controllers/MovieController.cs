@@ -15,11 +15,8 @@ namespace Pipocao.Controllers
         {
             var listMovies = new List<MovieViewModel>();
 
-            var list = MovieBusiness.Instance.List(1);
             if (User.Identity.IsAuthenticated)
-            {
                 listMovies = MovieBusiness.Instance.List(1, User.Identity.Name);
-            }
             else
                 listMovies = MovieBusiness.Instance.List(1);
 
@@ -31,6 +28,16 @@ namespace Pipocao.Controllers
             var movie = MovieBusiness.Instance.GetById(id);
 
             return View(movie);
+        }
+
+        public ActionResult ListFromUser()
+        {
+            var listMovies = new List<MovieViewModel>();
+
+            if (User.Identity.IsAuthenticated)
+                listMovies = MovieBusiness.Instance.ListFromUser(User.Identity.Name);
+
+            return View("List", listMovies);
         }
 
         [HttpPost]

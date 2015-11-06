@@ -103,7 +103,11 @@ namespace Business
 
                 var listMovies = new List<MovieViewModel>();
                 foreach (UserCollection movieUser in userMovies)
-                    listMovies.Add(new MovieViewModel(MovieServiceFacade.Instance.GetById(movieUser.MovieId)));
+                {
+                    var movie = new MovieViewModel(MovieServiceFacade.Instance.GetById(movieUser.MovieId));
+                    movie.IsVisible = false;
+                    listMovies.Add(movie);
+                }
 
                 return listMovies;
             }
