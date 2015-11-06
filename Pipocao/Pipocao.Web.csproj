@@ -191,6 +191,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Business\MovieBusiness.cs" />
+    <Compile Include="Business\MovieBusinessException.cs" />
+    <Compile Include="Business\UserBusiness.cs" />
+    <Compile Include="Business\UserBusinessException.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
@@ -198,7 +202,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\ValueConverter.cs" />
-    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="ViewModels\MovieViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -318,9 +323,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pipocao.Persistence\Pipocao.Persistence.csproj">
+    <ProjectReference Include="..\Pipocao.DAL\Pipocao.DAL.csproj">
       <Project>{ee4f5be2-7483-4e80-9765-97a2f34e3642}</Project>
-      <Name>Pipocao.Persistence</Name>
+      <Name>Pipocao.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\TMDBService\Pipocao.TMDBService.csproj">
       <Project>{4e6bbeca-1b0b-455b-9c2a-ae9d3edf3cce}</Project>

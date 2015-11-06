@@ -1,4 +1,4 @@
-﻿@model TMDBService.Models.Movie
+﻿@model Pipocao.ViewModels.MovieViewModel
 
 @{
     ViewBag.Title = "Detail";
@@ -123,6 +123,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id= Model.id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

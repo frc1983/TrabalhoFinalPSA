@@ -20,7 +20,6 @@ namespace TMDBService.Models
         private static String backdropImageSize = "w300";
         private static String posterImageSize = "w185";
 
-        [Display(Name = "Possui Conteúdo Adulto?")]
         public bool adult { get; set; }
 
         public String _backdrop_path;
@@ -37,16 +36,12 @@ namespace TMDBService.Models
         public List<Int32> genre_ids { get; set; }
         public Int32 id { get; set; }
 
-        [Display(Name = "Língua Original")]
         public String original_language { get; set; }
 
-        [Display(Name = "Titulo Original")]
         public String original_title { get; set; }
 
-        [Display(Name = "Sinopse")]
         public String overview { get; set; }
 
-        [Display(Name = "Data de Lançamento")]
         public DateTime release_date { get; set; }
 
         public String _poster_path;
@@ -60,20 +55,16 @@ namespace TMDBService.Models
             }
         }
 
-        [Display(Name = "Popularidade")]
         public double popularity { get; set; }
 
-        [Display(Name = "Título")]
         public String title { get; set; }
 
-        [Display(Name = "Possui Trailer?")]
         public bool video { get; set; }
 
         public double vote_average { get; set; }
         public Int32 vote_count { get; set; }
 
         private List<Genre> _genres;
-        [Display(Name = "Gêneros")]
         public List<Genre> genres
         {
             get
@@ -86,11 +77,48 @@ namespace TMDBService.Models
             set { }
         }
 
-        public List<ProductionCompanies> production_companies { get; set; }
-        public List<ProductionCountries> production_countries { get; set; }
+        private List<ProductionCompanies> _production_companies;
+        public List<ProductionCompanies> production_companies
+        {
+            get
+            {
+                if (this._production_companies == null)
+                    this._production_companies = new List<ProductionCompanies>();
+
+                return this._production_companies;
+            }
+            set { }
+        }
+
+        private List<ProductionCountries> _production_countries;
+        public List<ProductionCountries> production_countries
+        {
+            get
+            {
+                if (this._production_countries == null)
+                    this._production_countries = new List<ProductionCountries>();
+
+                return this._production_countries;
+            }
+            set { }
+        }
+
         public Int32 revenue { get; set; }
         public Int32 runtime { get; set; }
-        public List<SpokenLanguages> spoken_languages { get; set; }
+
+        private List<SpokenLanguages> _spoken_languages;
+        public List<SpokenLanguages> spoken_languages
+        {
+            get
+            {
+                if (this._spoken_languages == null)
+                    this._spoken_languages = new List<SpokenLanguages>();
+
+                return this._spoken_languages;
+            }
+            set { }
+        }
+
         public String status { get; set; }
         public String tagline { get; set; }
     }

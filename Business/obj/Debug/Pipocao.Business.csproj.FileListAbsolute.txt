@@ -1,0 +1,12 @@
+D:\PUCRS\PSA\Pipocao\Business\obj\Debug\Pipocao.Business.csprojResolveAssemblyReference.cache
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\Business.dll.config
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\Business.dll
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\Business.pdb
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\EntityFramework.dll
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\EntityFramework.SqlServer.dll
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\Pipocao.Persistence.dll
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\Pipocao.Persistence.pdb
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\EntityFramework.xml
+D:\PUCRS\PSA\Pipocao\Business\bin\Debug\EntityFramework.SqlServer.xml
+D:\PUCRS\PSA\Pipocao\Business\obj\Debug\Business.dll
+D:\PUCRS\PSA\Pipocao\Business\obj\Debug\Business.pdb

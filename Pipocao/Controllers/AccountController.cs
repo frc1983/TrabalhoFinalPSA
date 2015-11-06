@@ -8,7 +8,9 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using Pipocao.Models;
+using Pipocao.ViewModels;
+using Business;
+using Business.Exceptions;
 
 namespace Pipocao.Controllers
 {
@@ -25,17 +27,23 @@ namespace Pipocao.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult Login(LoginViewModel viewModel, string returnUrl)
         {
-            if (ModelState.IsValid && model.IsValid())
+            if (ModelState.IsValid)
             {
-                FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
-                return RedirectToLocal(returnUrl);
+                try
+                {
+                    UserBusiness.Instance.Login(viewModel);
+                    FormsAuthentication.SetAuthCookie(viewModel.Email, viewModel.RememberMe);
+                    return RedirectToLocal(returnUrl);
+                }
+                catch (UserBusinessException e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
             }
-
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(model);
+            
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -55,24 +63,24 @@ namespace Pipocao.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(RegisterViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    model.InsertUser();
-                    FormsAuthentication.SetAuthCookie(model.Email, false);
+                    UserBusiness.Instance.Insert(viewModel);
+
+                    FormsAuthentication.SetAuthCookie(viewModel.Email, false);
                     return RedirectToAction("Index", "Home");
                 }
-                catch (MembershipCreateUserException e)
+                catch (UserBusinessException e)
                 {
-                    ModelState.AddModelError("", "Error register");
+                    ModelState.AddModelError("", e.Message);
                 }
             }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            return View(viewModel);
         }
                 
         private ActionResult RedirectToLocal(string returnUrl)

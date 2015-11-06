@@ -1,5 +1,5 @@
-﻿@model IEnumerable<TMDBService.Models.Movie>
-
+﻿@model IEnumerable<Pipocao.ViewModels.MovieViewModel>
+@Scripts.Render("~/bundles/jquery")
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +17,8 @@
             @{
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
-                    <a href="" class="add-in-collection">Adicionar na minha lista</a>
+                    var visible = item.IsVisible ? "block" : "none";
+                    <a href="javascript:;" rel="@item.id" style="display: @visible" class="add-in-collection">Adicionar na minha lista</a>
                 }
             }
 
@@ -35,7 +36,7 @@
 
             @Html.LabelFor(modelItem => item.genres)
             @{    
-                var generos = String.Join(", ", item.genres.Select(x => x.name));   
+                var generos = String.Join(", ", item.genres);   
                 @Html.DisplayFor(modelItem => generos)
             }
 
@@ -58,3 +59,32 @@
         </div>
     </div>
 }
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.add-in-collection').click(function () {
+            AddMovie($(this), $(this).attr("rel"));
+        });
+    });
+    function AddMovie(element, id){
+        var data = JSON.stringify({ "id": id });
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddMovie")',
+            contentType: 'application/json; charset=utf-8',
+            data: data,
+            dataType: 'json',
+            success: function(data) {
+                console.log("DATA", element);
+                if(!data.Success){
+                    alert(data.Message);
+                }
+                element.hide();
+            },
+            error: function(data) {
+                console.log("DATA", data);
+            }
+        });
+    }
+</script>

@@ -55,6 +55,7 @@
     <Compile Include="Models\Movie.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MovieServiceFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IMovieService.cs" />
     <Compile Include="MovieService.cs" />
