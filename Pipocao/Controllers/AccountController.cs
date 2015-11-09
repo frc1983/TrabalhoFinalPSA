@@ -11,6 +11,7 @@ using WebMatrix.WebData;
 using Pipocao.ViewModels;
 using Business;
 using Business.Exceptions;
+using Entities;
 
 namespace Pipocao.Controllers
 {
@@ -33,7 +34,7 @@ namespace Pipocao.Controllers
             {
                 try
                 {
-                    UserBusiness.Instance.Login(viewModel);
+                    new UserBusiness().Login(new User() { Email = viewModel.Email, Password = viewModel.Password });
                     FormsAuthentication.SetAuthCookie(viewModel.Email, viewModel.RememberMe);
                     return RedirectToLocal(returnUrl);
                 }
@@ -42,7 +43,7 @@ namespace Pipocao.Controllers
                     ModelState.AddModelError("", e.Message);
                 }
             }
-            
+
             return View(viewModel);
         }
 
@@ -69,7 +70,7 @@ namespace Pipocao.Controllers
             {
                 try
                 {
-                    UserBusiness.Instance.Insert(viewModel);
+                    new UserBusiness().Insert(UserViewModel.Parse(viewModel));
 
                     FormsAuthentication.SetAuthCookie(viewModel.Email, false);
                     return RedirectToAction("Index", "Home");
@@ -82,7 +83,7 @@ namespace Pipocao.Controllers
 
             return View(viewModel);
         }
-                
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))

@@ -89,3 +89,7 @@ D:\PUCRS\PSA\Pipocao\Pipocao\bin\zh-Hant\System.Spatial.resources.dll
 D:\PUCRS\PSA\Pipocao\Pipocao\obj\Debug\Pipocao.Web.csprojResolveAssemblyReference.cache
 D:\PUCRS\PSA\Pipocao\Pipocao\obj\Debug\Pipocao.dll
 D:\PUCRS\PSA\Pipocao\Pipocao\obj\Debug\Pipocao.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao\bin\Pipocao.Entities.dll
+D:\PUCRS\PSA\Pipocao\Pipocao\bin\Pipocao.Entities.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao\bin\Pipocao.Business.dll
+D:\PUCRS\PSA\Pipocao\Pipocao\bin\Pipocao.Business.pdb

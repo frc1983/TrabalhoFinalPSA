@@ -1,0 +1,17 @@
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\obj\Debug\Pipocao.Business.csprojResolveAssemblyReference.cache
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\Pipocao.Business.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\Pipocao.Business.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\Pipocao.DAL.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\Pipocao.Entities.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\EntityFramework.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\TMDBService.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\System.Net.Http.Formatting.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\Newtonsoft.Json.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\Pipocao.DAL.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\Pipocao.Entities.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\EntityFramework.xml
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\TMDBService.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\System.Net.Http.Formatting.xml
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\bin\Debug\Newtonsoft.Json.xml
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\obj\Debug\Pipocao.Business.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Business\obj\Debug\Pipocao.Business.pdb

@@ -1,0 +1,5 @@
+D:\PUCRS\PSA\Pipocao\Pipocao.Entities\obj\Debug\Pipocao.Entities.csprojResolveAssemblyReference.cache
+D:\PUCRS\PSA\Pipocao\Pipocao.Entities\bin\Debug\Pipocao.Entities.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Entities\bin\Debug\Pipocao.Entities.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao.Entities\obj\Debug\Pipocao.Entities.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.Entities\obj\Debug\Pipocao.Entities.pdb

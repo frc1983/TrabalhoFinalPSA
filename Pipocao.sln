@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipocao.TMDBService", "TMDB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipocao.DAL", "Pipocao.DAL\Pipocao.DAL.csproj", "{EE4F5BE2-7483-4E80-9765-97A2F34E3642}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipocao.Entities", "Pipocao.Entities\Pipocao.Entities.csproj", "{53F9F045-9840-42F2-B622-98746F28E112}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipocao.Business", "Pipocao.Business\Pipocao.Business.csproj", "{1D465AC1-2A2A-43D5-BDF7-3B557D964156}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{EE4F5BE2-7483-4E80-9765-97A2F34E3642}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE4F5BE2-7483-4E80-9765-97A2F34E3642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE4F5BE2-7483-4E80-9765-97A2F34E3642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F9F045-9840-42F2-B622-98746F28E112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F9F045-9840-42F2-B622-98746F28E112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F9F045-9840-42F2-B622-98746F28E112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F9F045-9840-42F2-B622-98746F28E112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D465AC1-2A2A-43D5-BDF7-3B557D964156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D465AC1-2A2A-43D5-BDF7-3B557D964156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D465AC1-2A2A-43D5-BDF7-3B557D964156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D465AC1-2A2A-43D5-BDF7-3B557D964156}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -191,10 +191,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Business\MovieBusiness.cs" />
-    <Compile Include="Business\MovieBusinessException.cs" />
-    <Compile Include="Business\UserBusiness.cs" />
-    <Compile Include="Business\UserBusinessException.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
@@ -323,13 +319,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pipocao.DAL\Pipocao.DAL.csproj">
-      <Project>{ee4f5be2-7483-4e80-9765-97a2f34e3642}</Project>
-      <Name>Pipocao.DAL</Name>
+    <ProjectReference Include="..\Pipocao.Business\Pipocao.Business.csproj">
+      <Project>{1d465ac1-2a2a-43d5-bdf7-3b557d964156}</Project>
+      <Name>Pipocao.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TMDBService\Pipocao.TMDBService.csproj">
-      <Project>{4e6bbeca-1b0b-455b-9c2a-ae9d3edf3cce}</Project>
-      <Name>Pipocao.TMDBService</Name>
+    <ProjectReference Include="..\Pipocao.Entities\Pipocao.Entities.csproj">
+      <Project>{53f9f045-9840-42f2-b622-98746f28e112}</Project>
+      <Name>Pipocao.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

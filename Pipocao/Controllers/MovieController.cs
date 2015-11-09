@@ -1,5 +1,6 @@
 ﻿using Business;
 using Business.Exceptions;
+using Entities;
 using Pipocao.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,31 +14,41 @@ namespace Pipocao.Controllers
     {
         public ActionResult List()
         {
-            var listMovies = new List<MovieViewModel>();
+            MovieBusiness movieBusiness = new MovieBusiness();
+            var listMovies = movieBusiness.List(1);
+            var listFromUser = new List<MovieViewModel>();
 
             if (User.Identity.IsAuthenticated)
-                listMovies = MovieBusiness.Instance.List(1, User.Identity.Name);
-            else
-                listMovies = MovieBusiness.Instance.List(1);
+                listFromUser = MovieViewModel.Parse(movieBusiness.ListFromUser(User.Identity.Name));
 
-            return View(listMovies);
+            var MoviesVM = MovieViewModel.Parse(listMovies);
+
+            foreach (MovieViewModel myMovie in listFromUser)
+                foreach (MovieViewModel mvm in MoviesVM)
+                    if (myMovie.id.Equals(mvm.id))
+                        mvm.IsVisible = false;
+
+            return View(MoviesVM);
         }
 
         public ActionResult Detail(int id)
         {
-            var movie = MovieBusiness.Instance.GetById(id);
+            var movie = new MovieBusiness().GetById(id);
 
-            return View(movie);
+            return View(new MovieViewModel(movie));
         }
 
         public ActionResult ListFromUser()
         {
-            var listMovies = new List<MovieViewModel>();
+            var listMovies = new List<Movie>();
 
             if (User.Identity.IsAuthenticated)
-                listMovies = MovieBusiness.Instance.ListFromUser(User.Identity.Name);
+                listMovies = new MovieBusiness().ListFromUser(User.Identity.Name);
 
-            return View("List", listMovies);
+            var MoviesVM = MovieViewModel.Parse(listMovies);
+            MoviesVM.ForEach(x => x.IsVisible = false);
+
+            return View("List", MoviesVM);
         }
 
         [HttpPost]
@@ -45,8 +56,7 @@ namespace Pipocao.Controllers
         {
             try
             {
-                var user = User.Identity.Name;
-                MovieBusiness.Instance.InsertMovie(id, user);
+                new MovieBusiness().InsertMovie(id, User.Identity.Name);
                 return Json(new { Success = true });
             }
             catch (MovieBusinessException e)

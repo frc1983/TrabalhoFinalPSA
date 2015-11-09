@@ -32,3 +32,5 @@ D:\PUCRS\PSA\Pipocao\Pipocao.DAL\bin\Debug\Newtonsoft.Json.xml
 D:\PUCRS\PSA\Pipocao\Pipocao.DAL\obj\Debug\Pipocao.DAL.csprojResolveAssemblyReference.cache
 D:\PUCRS\PSA\Pipocao\Pipocao.DAL\obj\Debug\Pipocao.DAL.dll
 D:\PUCRS\PSA\Pipocao\Pipocao.DAL\obj\Debug\Pipocao.DAL.pdb
+D:\PUCRS\PSA\Pipocao\Pipocao.DAL\bin\Debug\Pipocao.Entities.dll
+D:\PUCRS\PSA\Pipocao\Pipocao.DAL\bin\Debug\Pipocao.Entities.pdb

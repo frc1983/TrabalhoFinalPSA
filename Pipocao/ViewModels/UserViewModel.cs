@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Web.Security;
 using System.Linq;
 using System.Data;
+using Entities;
 
 namespace Pipocao.ViewModels
 {
@@ -21,6 +22,15 @@ namespace Pipocao.ViewModels
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
+
+        public static User Parse(UserViewModel viewModel)
+        {
+            User user = new User();
+            user.Email = viewModel.Email;
+            user.Password = viewModel.Password;
+
+            return user;
+        }
     }
 
     public class LoginViewModel : UserViewModel

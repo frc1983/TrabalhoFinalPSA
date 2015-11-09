@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -54,7 +55,16 @@ namespace Pipocao.ViewModels
 
         public bool IsVisible { get; set; }
 
-        public MovieViewModel(TMDBService.Models.Movie movie)
+        public static List<MovieViewModel> Parse(List<Movie> movies)
+        {
+            List<MovieViewModel> ret = new List<MovieViewModel>();
+            foreach(var movie in movies)
+                ret.Add(new MovieViewModel(movie));
+
+            return ret;
+        }
+
+        public MovieViewModel(Movie movie)
         {
             this.adult = movie.adult;
             this.backdrop_path = movie.backdrop_path;

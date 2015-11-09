@@ -1,4 +1,5 @@
 ﻿using DAL.Model;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +10,24 @@ namespace DAL
 {
     public class UserRepository
     {
-        private static UserRepository instance;
-        public static UserRepository Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new UserRepository();
-                }
-                return instance;
-            }
-        }
-
         public User Find(User user)
         {
             using (var ctx = new DatabaseContext())
             {
                 var u = ctx.User
                     .Where(x => x.Email.ToLower().Equals(user.Email.ToLower()) && x.Password.Equals(user.Password))
+                    .FirstOrDefault();
+
+                return u;
+            }
+        }
+
+        public User FindByEmail(String login)
+        {
+            using (var ctx = new DatabaseContext())
+            {
+                var u = ctx.User
+                    .Where(x => x.Email.ToLower().Equals(login.ToLower()))
                     .FirstOrDefault();
 
                 return u;

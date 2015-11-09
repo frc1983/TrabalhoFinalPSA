@@ -6,12 +6,13 @@ namespace DAL
     using System.Linq;
     using DAL.Model.Mapping;
     using DAL.Model;
+    using Entities;
 
     public partial class DatabaseContext : DbContext, IDisposable
     {
         public DatabaseContext() : base("name=DatabaseContext")
         {
-            //Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseAlways<DatabaseContext>());
+            Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseAlways<DatabaseContext>());
             //Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseIfModelChanges<DatabaseContext>());
         }
 
