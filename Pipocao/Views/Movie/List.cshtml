@@ -7,42 +7,47 @@
 
 <h1>Lista de Filmes</h1>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <div class="item-movie-list">
         <span>
-            <h2>@Html.DisplayFor(modelItem => item.title)</h2>            
+            <h2>@Html.DisplayFor(modelItem => item.title)</h2>
         </span>
         <img src="@item.poster_path" class="image-movie-list" />
         <div class="description-movie-list">
             @{
-                if (HttpContext.Current.User.Identity.IsAuthenticated)
-                {
-                    var visible = item.IsVisible ? "block" : "none";
-                    <a href="javascript:;" rel="@item.id" style="display: @visible" class="add-in-collection">Adicionar na minha lista</a>
-                }
+    if (HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        var visible = item.IsVisible ? "block" : "none";
+                <a href="javascript:;" rel="@item.id" style="display: @visible" class="add-in-collection">Adicionar na minha lista</a>
+    }
             }
 
             @Html.LabelFor(modelItem => item.release_date)
             @{
-                var date = item.release_date.ToShortDateString();             
+    var date = item.release_date.ToShortDateString();             
                 @Html.DisplayFor(modelItem => date)
             }
 
             @Html.LabelFor(modelItem => item.genres)
             @{    
-                var generos = String.Join(", ", item.genres);   
+    var generos = String.Join(", ", item.genres);   
                 @Html.DisplayFor(modelItem => generos)
             }
-            <br /><br />
-            <input type="button" value="Detalhes" class="" onclick="location.href='@Url.Action("Detail", new { id = item.id })'" />
+            <br />
+            <br />
+            <input type="button" value="Detalhes" class="" onclick="location.href='@Url.Action("Detail", new { id = item.id })    '" />
         </div>
     </div>
 }
 
 <div class="pagination clear-fix">
-    @for (int i = 1; i <= 30; i++)
+    @if (!Model.First().ListFromUser)
     {
+        for (int i = 1; i <= 30; i++)
+        {
         @Html.ActionLink(i.ToString(), "List", new { page = i })
+        }
     }
 </div>
 

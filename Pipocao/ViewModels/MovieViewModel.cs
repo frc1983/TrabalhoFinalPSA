@@ -68,6 +68,8 @@ namespace Pipocao.ViewModels
             }
         }
 
+        public bool ListFromUser { get; set; }
+
         public static List<MovieViewModel> Parse(List<Movie> movies)
         {
             List<MovieViewModel> ret = new List<MovieViewModel>();

@@ -28,8 +28,11 @@ namespace Pipocao.Controllers
 
             foreach (MovieViewModel myMovie in listFromUser)
                 foreach (MovieViewModel mvm in MoviesVM)
+                {
+                    mvm.ListFromUser = false;
                     if (myMovie.id.Equals(mvm.id))
                         mvm.IsVisible = false;
+                }
 
             return View(MoviesVM);
         }
@@ -50,7 +53,10 @@ namespace Pipocao.Controllers
                 listMovies = new MovieBusiness().ListFromUser(User.Identity.Name);
 
             var MoviesVM = MovieViewModel.Parse(listMovies);
-            MoviesVM.ForEach(x => x.IsVisible = false);
+            MoviesVM.ForEach((x) => {
+                x.IsVisible = false;
+                x.ListFromUser = true;
+            });
 
             return View("List", MoviesVM);
         }
