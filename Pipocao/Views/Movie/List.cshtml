@@ -8,7 +8,7 @@
 <h1>Lista de Filmes</h1>
 
 @foreach (var item in Model) {
-    <div class="item-movie-list clear-fix">
+    <div class="item-movie-list">
         <span>
             <h2>@Html.DisplayFor(modelItem => item.title)</h2>            
         </span>
@@ -28,37 +28,23 @@
                 @Html.DisplayFor(modelItem => date)
             }
 
-            @Html.LabelFor(modelItem => item.original_language)
-            @Html.DisplayFor(modelItem => item.original_language)
-
-            @Html.LabelFor(modelItem => item.original_title)
-            @Html.DisplayFor(modelItem => item.original_title)
-
             @Html.LabelFor(modelItem => item.genres)
             @{    
                 var generos = String.Join(", ", item.genres);   
                 @Html.DisplayFor(modelItem => generos)
             }
-
-            @Html.LabelFor(modelItem => item.adult)
-            @{
-                var adult = Pipocao.Helper.ValueConverter.boolToYesOrNo(item.adult);             
-                @Html.DisplayFor(modelItem => adult)
-            }
-            
-            @Html.LabelFor(modelItem => item.overview)
-            @Html.DisplayFor(modelItem => item.overview)
-            
-            @Html.LabelFor(modelItem => item.video)
-            @{
-                var video = Pipocao.Helper.ValueConverter.boolToYesOrNo(item.video);             
-                @Html.DisplayFor(modelItem => video)
-            }
-
-            <input type="button" value="Detalhes" class="float-right" onclick="location.href='@Url.Action("Detail", new { id = item.id })'" />
+            <br /><br />
+            <input type="button" value="Detalhes" class="" onclick="location.href='@Url.Action("Detail", new { id = item.id })'" />
         </div>
     </div>
 }
+
+<div class="pagination clear-fix">
+    @for (int i = 1; i <= 30; i++)
+    {
+        @Html.ActionLink(i.ToString(), "List", new { page = i })
+    }
+</div>
 
 <script type="text/javascript">
     $(document).ready(function(){

@@ -26,7 +26,7 @@ namespace TMDBService
         public List<Movie> List(int page)
         {
             IMovieService service = new MovieService();
-            return service.getMoviesAsync("discover/movie", new Dictionary<string, string>() { { "page", "1" } }).Result;
+            return service.getMoviesAsync("discover/movie", new Dictionary<string, string>() { { "page", page.ToString() } }).Result;
         }
 
         public Movie GetById(int id)

@@ -1,6 +1,7 @@
 ﻿using Business;
 using Business.Exceptions;
 using Entities;
+using Pipocao.Business;
 using Pipocao.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace Pipocao.Controllers
 {
     public class MovieController : Controller
     {
-        public ActionResult List()
+        public ActionResult List(int? page)
         {
+            if (!page.HasValue) page = 1;
+
             MovieBusiness movieBusiness = new MovieBusiness();
-            var listMovies = movieBusiness.List(1);
+            var listMovies = movieBusiness.List(page.Value);
             var listFromUser = new List<MovieViewModel>();
 
             if (User.Identity.IsAuthenticated)
@@ -34,8 +37,9 @@ namespace Pipocao.Controllers
         public ActionResult Detail(int id)
         {
             var movie = new MovieBusiness().GetById(id);
+            var comments = new ReviewBusiness().GetAllByMovieId(id);
 
-            return View(new MovieViewModel(movie));
+            return View(new MovieViewModel(movie, comments));
         }
 
         public ActionResult ListFromUser()
@@ -60,6 +64,20 @@ namespace Pipocao.Controllers
                 return Json(new { Success = true });
             }
             catch (MovieBusinessException e)
+            {
+                return Json(new { Success = false, Message = e.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult SendComment(Int32 movieId, Int32 rate, String comment)
+        {
+            try
+            {
+                new ReviewBusiness().InsertMovieCommentary(User.Identity.Name, movieId, rate, comment);
+                return Json(new { Success = true });
+            }
+            catch (ReviewBusinessException e)
             {
                 return Json(new { Success = false, Message = e.Message });
             }

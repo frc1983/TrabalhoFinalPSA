@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Business;
+using Entities;
+using Pipocao.Business;
+using Pipocao.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,23 +14,25 @@ namespace Pipocao.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            HomeViewModel homeVM = new HomeViewModel();
+            homeVM.Top10Best = new List<MovieViewModel>();
+            homeVM.Top10Worst = new List<MovieViewModel>();
 
-            return View();
-        }
+            var top10 = new MovieBusiness().GetTopTenBestMovies();
+            var last10 = new MovieBusiness().GetTopTenWorstMovies();
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
+            foreach(Movie m in top10){
+                var reviewBestCount = new ReviewBusiness().GetAllByMovieId(m.id);
+                homeVM.Top10Best.Add(new MovieViewModel(m, reviewBestCount));
+            }
 
-            return View();
-        }
+            foreach (Movie m in last10)
+            {
+                var reviewBestCount = new ReviewBusiness().GetAllByMovieId(m.id);
+                homeVM.Top10Worst.Add(new MovieViewModel(m, reviewBestCount));
+            }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(homeVM);
         }
     }
 }

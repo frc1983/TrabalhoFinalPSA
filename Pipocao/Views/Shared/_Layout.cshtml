@@ -21,11 +21,9 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Movie", "List", "Movie")</li>
+                            <li>@Html.ActionLink("Filmes", "List", "Movie")</li>
                             @if(HttpContext.Current.User.Identity.IsAuthenticated){
-                                <li>@Html.ActionLink("My Movies", "ListFromUser", "Movie")</li>
+                                <li>@Html.ActionLink("Meus filmes", "ListFromUser", "Movie")</li>
                             }
                         </ul>
                     </nav>
@@ -41,7 +39,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                    <p>&copy; @DateTime.Now.Year - Pipocão.com</p>
                 </div>
             </div>
         </footer>

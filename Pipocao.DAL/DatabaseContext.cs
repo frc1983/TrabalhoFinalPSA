@@ -8,7 +8,7 @@ namespace DAL
     using DAL.Model;
     using Entities;
 
-    public partial class DatabaseContext : DbContext, IDisposable
+    public partial class DatabaseContext : DbContext
     {
         public DatabaseContext() : base("name=DatabaseContext")
         {

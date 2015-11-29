@@ -68,16 +68,6 @@ namespace TMDBService
             return retorno;
         }
 
-        public async Task<List<Movie>> getMovieImagesAsync(string action, Dictionary<string, string> parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<List<Movie>> getMovieCreditsAsync(string action, Dictionary<string, string> parameters)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<Genre>> getGenresAsync()
         {
             List<Genre> retorno = null;

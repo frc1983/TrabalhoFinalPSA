@@ -1,128 +1,161 @@
 ﻿@model Pipocao.ViewModels.MovieViewModel
-
+@Scripts.Render("~/bundles/jquery")
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detail</h2>
+<h2>Detalhes - @Model.title</h2>
 
 <fieldset>
-    <legend>Movie</legend>
+    <legend>Detalhes de @Html.DisplayFor(model => model.title)</legend>
+    <img src="@Model.poster_path" class="image-movie-list" />
+    <div class="description-movie-list-detail">
+        @Html.LabelFor(model => model.release_date)
+        @{
+            var date = Model.release_date.ToShortDateString();             
+            @Html.DisplayFor(model => date)
+        }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.adult)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.adult)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.backdrop_path)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.backdrop_path)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.original_language)
-    </div>
-    <div class="display-field">
+        @Html.LabelFor(model => model.original_language)
         @Html.DisplayFor(model => model.original_language)
-    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.original_title)
-    </div>
-    <div class="display-field">
+        @Html.LabelFor(model => model.original_title)
         @Html.DisplayFor(model => model.original_title)
-    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.overview)
-    </div>
-    <div class="display-field">
+        @Html.LabelFor(model => model.genres)
+        @{    
+            var generos = String.Join(", ", Model.genres);   
+            @Html.DisplayFor(model => generos)
+        }
+
+        @Html.LabelFor(model => model.adult)
+        @{
+            var adult = Pipocao.Helper.ValueConverter.boolToYesOrNo(Model.adult);             
+            @Html.DisplayFor(model => adult)
+        }
+
+        @Html.LabelFor(model => model.overview)
         @Html.DisplayFor(model => model.overview)
+
+        @Html.Label("Nota geral:")
+        <p class="average-stars">
+            <img src="../../Images/star_empty.png" alt="1" />
+            <img src="../../Images/star_empty.png" alt="2" />
+            <img src="../../Images/star_empty.png" alt="2" />
+            <img src="../../Images/star_empty.png" alt="4" />
+            <img src="../../Images/star_empty.png" alt="5" />
+        </p>
+
+        @Html.LabelFor(model => model.video)
+        @{
+            var video = Pipocao.Helper.ValueConverter.boolToYesOrNo(Model.video);             
+            @Html.DisplayFor(model => video)
+        }
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.release_date)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.release_date)
-    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h2>Deixe sua avaliação!</h2>
+        <div class="comments">
+            <p class="stars">
+                <img src="../../Images/star_empty.png" alt="1" id="1" />
+                <img src="../../Images/star_empty.png" alt="2" id="2" />
+                <img src="../../Images/star_empty.png" alt="2" id="3" />
+                <img src="../../Images/star_empty.png" alt="4" id="4" />
+                <img src="../../Images/star_empty.png" alt="5" id="5" />
+            </p>
+            <input type="hidden" id="rate" value="0" />
+            <input type="hidden" id="movieId" value="@Model.id" />
+            <textarea id="comment"></textarea>
+            <input type="button" id="btnComment" value="Enviar comentário" />
+        </div>
+    }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.poster_path)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.poster_path)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.popularity)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.popularity)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.title)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.title)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.video)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.video)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.vote_average)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.vote_average)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.vote_count)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.vote_count)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.revenue)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.revenue)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.runtime)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.runtime)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.status)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.status)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.tagline)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.tagline)
+    <h2>Comentários</h2>
+    <div class="prev-comments">
+        @if (Model.Comments.Count > 0)
+        {
+            foreach (var item in Model.Comments)
+            {
+            <div id="item-prev-commentary">
+                Usuário: @item.User.Email
+                Data do comentário: @item.ReviewDate.ToShortDateString()
+                Nota: @item.Note.ToString()
+                Comentário: @item.Commentary
+            </div>            
+            }
+        }
+        else
+        {
+            <h3>Seja o primeiro a comentar.</h3>
+        }
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id= Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para a Lista", "List")
 </p>
+<script>
+    $(document).ready(function () {
+        selectStars('@Model.AverageRate');
+
+        $.each($(".comments > p img"), function (index, img) {
+            $(this).click(function () {
+                $(".comments > p img").attr("src", "../../Images/star_empty.png");
+                $(this).attr("src", "../../Images/stars.png").prevAll("img").attr("src", "../../Images/stars.png");
+
+                $("#rate").val(parseInt($(this).attr('id')));
+            });
+        });
+
+        $("#btnComment").click(function () {
+            var movieId = $("#movieId").val();
+            var rate = $("#rate").val();
+            var comment = $("#comment").val();
+
+            if (rate <= 0)
+                alert("Você deve dar uma nota.")
+            else if (comment == "")
+                alert("Você deve escrever um comentário.")
+            else
+                AddComment(movieId, rate, comment);
+        });
+    });
+
+    function selectStars(val) {
+        $.each($(".average-stars img"), function (index, img) {
+            console.log("Val", val)
+            if (parseInt($(this).attr("alt")) <= val) {
+                $(this).attr("src", "../../Images/stars.png");
+            }
+        });
+    }
+
+    function AddComment(movieId, rate, comment) {
+        var data = JSON.stringify({ "movieId": movieId, "rate": rate, "comment": comment });
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("SendComment")',
+            contentType: 'application/json; charset=utf-8',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                clearFields();
+                if (!data.Success) {
+                    alert(data.Message);
+                } else {
+                    location.reload();
+                }
+            },
+            error: function (data) {
+                console.log("DATA", data);
+            }
+        });
+    }
+
+    function clearFields() {
+        $("#comment").val("");
+        $("#rate").val(0);
+    }
+</script>

@@ -42,6 +42,8 @@
     <Compile Include="MovieBusiness.cs" />
     <Compile Include="MovieBusinessException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewBusiness.cs" />
+    <Compile Include="ReviewBusinessException.cs" />
     <Compile Include="UserBusiness.cs" />
     <Compile Include="UserBusinessException.cs" />
   </ItemGroup>

@@ -55,16 +55,29 @@ namespace Pipocao.ViewModels
 
         public bool IsVisible { get; set; }
 
+        public List<Review> Comments { get; set; }
+
+        public Int32 AverageRate
+        {
+            get
+            {
+                var sum = this.Comments.Sum(x => x.Note);
+                if (this.Comments.Count == 0) return 0;
+
+                return sum / this.Comments.Count;
+            }
+        }
+
         public static List<MovieViewModel> Parse(List<Movie> movies)
         {
             List<MovieViewModel> ret = new List<MovieViewModel>();
-            foreach(var movie in movies)
+            foreach (var movie in movies)
                 ret.Add(new MovieViewModel(movie));
 
             return ret;
         }
 
-        public MovieViewModel(Movie movie)
+        public MovieViewModel(Movie movie, List<Review> comments = null)
         {
             this.adult = movie.adult;
             this.backdrop_path = movie.backdrop_path;
@@ -102,6 +115,10 @@ namespace Pipocao.ViewModels
             this.status = movie.status;
             this.tagline = movie.tagline;
             this.IsVisible = true;
+
+            this.Comments = new List<Review>();
+            if (comments != null)
+                this.Comments = comments;
         }
     }
 }

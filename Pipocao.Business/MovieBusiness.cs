@@ -1,13 +1,9 @@
 ﻿using Business.Exceptions;
 using DAL;
-using DAL.Model;
 using Entities;
 using Pipocao.DAL;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMDBService;
 
 namespace Business
@@ -17,7 +13,7 @@ namespace Business
         public List<Movie> List(int page)
         {
             List<Movie> movies = new List<Movie>();
-            var list = MovieServiceFacade.Instance.List(page);
+            var list = new MovieRepository().List(page);
             if (list == null)
                 throw new Exception("Nenhum filme encontrado.");
 
@@ -56,6 +52,16 @@ namespace Business
                 throw new MovieBusinessException("Nenhum filme cadastrado na sua coleção.");
 
             return userMovies;
+        }
+
+        public List<Movie> GetTopTenBestMovies()
+        {
+            return new MovieRepository().GetTopTenBestMovies();
+        }
+
+        public List<Movie> GetTopTenWorstMovies()
+        {
+            return new MovieRepository().GetTopTenWorstMovies();
         }
     }
 }
