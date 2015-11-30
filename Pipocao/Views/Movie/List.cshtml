@@ -1,14 +1,20 @@
 ﻿@model IEnumerable<Pipocao.ViewModels.MovieViewModel>
 @Scripts.Render("~/bundles/jquery")
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Lista de Filmes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Lista de Filmes</h1>
 
-@foreach (var item in Model)
+@if (Model.Count() == 0)
 {
+    <p>Você não tem nenhum filme adicionado na sua lista ainda.</p>
+}
+else
+{
+    foreach (var item in Model)
+    {
     <div class="item-movie-list">
         <span>
             <h2>@Html.DisplayFor(modelItem => item.title)</h2>
@@ -16,33 +22,38 @@
         <img src="@item.poster_path" class="image-movie-list" />
         <div class="description-movie-list">
             @{
-    if (HttpContext.Current.User.Identity.IsAuthenticated)
-    {
-        var visible = item.IsVisible ? "block" : "none";
-                <a href="javascript:;" rel="@item.id" style="display: @visible" class="add-in-collection">Adicionar na minha lista</a>
-    }
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    var visible = item.IsVisible ? "block" : "none";
+                        <a href="javascript:;" rel="@item.id" style="display: @visible" class="add-in-collection">Adicionar na minha lista</a>
+                }
             }
 
             @Html.LabelFor(modelItem => item.release_date)
             @{
-    var date = item.release_date.ToShortDateString();             
+                var date = item.release_date.ToShortDateString();             
                 @Html.DisplayFor(modelItem => date)
             }
 
             @Html.LabelFor(modelItem => item.genres)
             @{    
-    var generos = String.Join(", ", item.genres);   
+                var generos = String.Join(", ", item.genres);   
                 @Html.DisplayFor(modelItem => generos)
             }
             <br />
             <br />
-            <input type="button" value="Detalhes" class="" onclick="location.href='@Url.Action("Detail", new { id = item.id })    '" />
+            <input type="button" value="Detalhes" class="" onclick="location.href='@Url.Action("Detail", new { id = item.id })'" />
+
+            @if(item.ListFromUser){
+                <input type="button" value="Remover" class="button-red" onclick="javascript:RemoveMovie('@item.id');" />
+            }
         </div>
     </div>
+    }
 }
 
 <div class="pagination clear-fix">
-    @if (!Model.First().ListFromUser)
+    @if (Model.Count() > 0 && !Model.First().ListFromUser)
     {
         for (int i = 1; i <= 30; i++)
         {
@@ -67,11 +78,34 @@
             data: data,
             dataType: 'json',
             success: function(data) {
-                console.log("DATA", element);
                 if(!data.Success){
                     alert(data.Message);
                 }
                 element.hide();
+            },
+            error: function(data) {
+                console.log("DATA", data);
+            }
+        });
+    }
+
+    function RemoveMovie(id){
+        var data = JSON.stringify({ "id": id });
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Remove")',
+            contentType: 'application/json; charset=utf-8',
+            data: data,
+            dataType: 'json',
+            success: function(data) {
+                
+                if(!data.Success){
+                    alert(data.Message);
+                } else {
+                    location.reload();
+                }
+                
             },
             error: function(data) {
                 console.log("DATA", data);

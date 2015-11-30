@@ -94,5 +94,19 @@ namespace Pipocao.DAL
                 return listWorst;
             }
         }
+
+        public void RemoveMovieFromUser(int id, User user)
+        {
+            using (var ctx = new DatabaseContext())
+            {
+                var item = ctx.UserCollection.Where(x => x.User.Id == user.Id && x.MovieId == id).FirstOrDefault();
+
+                if (item == null)
+                    throw new MovieRepositoryException("Filme não encontrado na lista.");
+
+                ctx.UserCollection.Remove(item);
+                ctx.SaveChanges();
+            }
+        }
     }
 }

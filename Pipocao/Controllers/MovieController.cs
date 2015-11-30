@@ -52,7 +52,7 @@ namespace Pipocao.Controllers
             if (User.Identity.IsAuthenticated)
                 listMovies = new MovieBusiness().ListFromUser(User.Identity.Name);
 
-            var MoviesVM = MovieViewModel.Parse(listMovies);
+            var MoviesVM = listMovies.Count > 0 ? MovieViewModel.Parse(listMovies) : new List<MovieViewModel>();
             MoviesVM.ForEach((x) => {
                 x.IsVisible = false;
                 x.ListFromUser = true;
@@ -69,7 +69,7 @@ namespace Pipocao.Controllers
                 new MovieBusiness().InsertMovie(id, User.Identity.Name);
                 return Json(new { Success = true });
             }
-            catch (MovieBusinessException e)
+            catch (Exception e)
             {
                 return Json(new { Success = false, Message = e.Message });
             }
@@ -83,7 +83,21 @@ namespace Pipocao.Controllers
                 new ReviewBusiness().InsertMovieCommentary(User.Identity.Name, movieId, rate, comment);
                 return Json(new { Success = true });
             }
-            catch (ReviewBusinessException e)
+            catch (Exception e)
+            {
+                return Json(new { Success = false, Message = e.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Remove(int id)
+        {
+            try
+            {
+                new MovieBusiness().RemoveMovie(id, User.Identity.Name);
+                return Json(new { Success = true });
+            }
+            catch (Exception e)
             {
                 return Json(new { Success = false, Message = e.Message });
             }

@@ -25,11 +25,12 @@
 <ol class="round">
     @{
         count = 1;
-        foreach (var best in Model.Top10Worst)
+        foreach (var worst in Model.Top10Worst)
         {        
         <li class="@Pipocao.Helper.ValueConverter.numberToText(count)">
-            <h2>@best.title</h2>
-            @Html.ActionLink("Ir para o filme", "Detail", "Movie", new { id = best.id }, null)
+            <h2>@worst.title</h2>
+            Nota: @worst.AverageRate
+            @Html.ActionLink("Ir para o filme", "Detail", "Movie", new { id = worst.id }, null)
         </li>
             count++;
         }

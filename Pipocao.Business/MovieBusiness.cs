@@ -15,7 +15,7 @@ namespace Business
             List<Movie> movies = new List<Movie>();
             var list = new MovieRepository().List(page);
             if (list == null)
-                throw new Exception("Nenhum filme encontrado.");
+                throw new MovieBusinessException("Nenhum filme encontrado.");
 
             return list;
         }
@@ -62,6 +62,17 @@ namespace Business
         public List<Movie> GetTopTenWorstMovies()
         {
             return new MovieRepository().GetTopTenWorstMovies();
+        }
+
+        public void RemoveMovie(int id, string login)
+        {
+            MovieRepository movieRepository = new MovieRepository();
+
+            var user = new UserRepository().FindByEmail(login);
+            if (user == null)
+                throw new UserBusinessException("Usuário não cadastrado.");
+
+            movieRepository.RemoveMovieFromUser(id, user);
         }
     }
 }

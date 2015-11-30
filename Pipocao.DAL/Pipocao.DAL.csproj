@@ -56,6 +56,7 @@
     <Compile Include="Model\Mapping\ReviewMap.cs" />
     <Compile Include="Model\Mapping\UserCollectionMap.cs" />
     <Compile Include="MovieRepository.cs" />
+    <Compile Include="MovieRepositoryException.cs" />
     <Compile Include="MovieServiceFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Mapping\UserMap.cs" />

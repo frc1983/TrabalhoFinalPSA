@@ -848,3 +848,16 @@ tr.pager td {
         padding: 9px;
         display: inline-block;
     }
+
+a.logo, a.logo:hover {
+    background: url(../Images/logo.png) no-repeat top left;
+    display: block;
+    width: 610px;
+    height: 95px;
+    text-indent: -9999px;
+}
+
+.button-red {
+    background-color: red !important;
+    color: white;
+}

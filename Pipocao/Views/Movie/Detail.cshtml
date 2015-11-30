@@ -1,9 +1,15 @@
 ﻿@model Pipocao.ViewModels.MovieViewModel
 @Scripts.Render("~/bundles/jquery")
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Detalhe do Filme";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<meta property="og:url" content="http://pipocao.apphb.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pipocão - @Model.title" />
+    <meta property="og:description" content="Melhor site de avaliações de filmes da Web" />
+    <meta property="og:image" content="@Model.poster_path" />
 
 <h2>Detalhes - @Model.title</h2>
 
@@ -70,6 +76,8 @@
             <textarea id="comment"></textarea>
             <input type="button" id="btnComment" value="Enviar comentário" />
         </div>
+        
+        <div class="fb-share-button" data-href="http://pipocao.apphb.com" data-layout="button_count"></div>
     }
 
     <h2>Comentários</h2>
@@ -95,6 +103,7 @@
 <p>
     @Html.ActionLink("Voltar para a Lista", "List")
 </p>
+
 <script>
     $(document).ready(function () {
         selectStars('@Model.AverageRate');
@@ -124,7 +133,6 @@
 
     function selectStars(val) {
         $.each($(".average-stars img"), function (index, img) {
-            console.log("Val", val)
             if (parseInt($(this).attr("alt")) <= val) {
                 $(this).attr("src", "../../Images/stars.png");
             }
