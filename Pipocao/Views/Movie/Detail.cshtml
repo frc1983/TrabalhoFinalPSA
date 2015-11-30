@@ -1,15 +1,9 @@
 ﻿@model Pipocao.ViewModels.MovieViewModel
 @Scripts.Render("~/bundles/jquery")
 @{
-    ViewBag.Title = "Detalhe do Filme";
+    ViewBag.Title = "Detalhe do Filme - " + @Model.title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<meta property="og:url" content="http://pipocao.apphb.com" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Pipocão - @Model.title" />
-    <meta property="og:description" content="Melhor site de avaliações de filmes da Web" />
-    <meta property="og:image" content="@Model.poster_path" />
 
 <h2>Detalhes - @Model.title</h2>
 
@@ -74,10 +68,15 @@
             <input type="hidden" id="rate" value="0" />
             <input type="hidden" id="movieId" value="@Model.id" />
             <textarea id="comment"></textarea>
+            <br /><br />
             <input type="button" id="btnComment" value="Enviar comentário" />
         </div>
-        
-        <div class="fb-share-button" data-href="http://pipocao.apphb.com" data-layout="button_count"></div>
+
+        <a class="fb-share-button" 
+            data-image="@Model.poster_path"
+            data-title="@Model.title"
+            data-desc="Melhor site de avaliações de filmes da Web"
+            data-href="http://pipocao.apphb.com/Movie/Detail/@Model.id" data-layout="button_count"></a>
     }
 
     <h2>Comentários</h2>
@@ -166,4 +165,36 @@
         $("#comment").val("");
         $("#rate").val(0);
     }
+</script>
+
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '903219083095207',
+            xfbml: true,
+            version: 'v2.5',
+            status: true
+        });
+    };
+
+    (function (d, debug) { var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0]; if (d.getElementById(id)) { return; } js = d.createElement('script'); js.id = id; js.async = true; js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js"; ref.parentNode.insertBefore(js, ref); }(document, /*debug*/ false));
+
+    function postToFeed(title, desc, url, image) {
+        var obj = { method: 'feed', link: url, picture: image, name: title, description: desc };
+        function callback(response) { }
+        FB.ui(obj, callback);
+    }
+
+    var fbShareBtn = document.querySelector('.fb-share-button');
+    fbShareBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var title = fbShareBtn.getAttribute('data-title'),
+            desc = fbShareBtn.getAttribute('data-desc'),
+            url = fbShareBtn.getAttribute('href'),
+            image = fbShareBtn.getAttribute('data-image');
+        postToFeed(title, desc, url, image);
+
+        return false;
+    });
 </script>

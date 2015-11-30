@@ -861,3 +861,11 @@ a.logo, a.logo:hover {
     background-color: red !important;
     color: white;
 }
+
+.tops {
+    width: 45%;
+    float: left;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 5px;
+}

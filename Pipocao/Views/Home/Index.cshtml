@@ -5,34 +5,37 @@
 
 <h1>Filmes avaliados no site:</h1>
 
-<h2>10 Melhores avaliados:</h2>
-<ol class="round">
-    @{
-        int count = 1;
-        foreach (var best in Model.Top10Best)
-        {        
-        <li class="@Pipocao.Helper.ValueConverter.numberToText(count)">
-            <h2>@best.title</h2>
-            Nota: @best.AverageRate
-            @Html.ActionLink("Ir para o filme", "Detail", "Movie", new { id = best.id }, null)
-        </li>
-            count++;
+<div class="tops">
+    <h2>10 Melhores avaliados:</h2>
+    <ol class="round">
+        @{
+            int count = 1;
+            foreach (var best in Model.Top10Best)
+            {        
+            <li class="@Pipocao.Helper.ValueConverter.numberToText(count)">
+                <h2>@best.title</h2>
+                Nota: @best.AverageRate
+                @Html.ActionLink("Ir para o filme", "Detail", "Movie", new { id = best.id }, null)
+            </li>
+                count++;
+            }
         }
-    }
-</ol>
-
-<h2>10 Piores avaliados:</h2>
-<ol class="round">
-    @{
-        count = 1;
-        foreach (var worst in Model.Top10Worst)
-        {        
-        <li class="@Pipocao.Helper.ValueConverter.numberToText(count)">
-            <h2>@worst.title</h2>
-            Nota: @worst.AverageRate
-            @Html.ActionLink("Ir para o filme", "Detail", "Movie", new { id = worst.id }, null)
-        </li>
-            count++;
+    </ol>
+</div>
+<div class="tops">
+    <h2>10 Piores avaliados:</h2>
+    <ol class="round">
+        @{
+            count = 1;
+            foreach (var worst in Model.Top10Worst)
+            {        
+            <li class="@Pipocao.Helper.ValueConverter.numberToText(count)">
+                <h2>@worst.title</h2>
+                Nota: @worst.AverageRate
+                @Html.ActionLink("Ir para o filme", "Detail", "Movie", new { id = worst.id }, null)
+            </li>
+                count++;
+            }
         }
-    }
-</ol>
+    </ol>
+</div>
