@@ -78,20 +78,25 @@ namespace Pipocao.DAL
         {
             using (var ctx = new DatabaseContext())
             {
-                var bests = ctx.Review.GroupBy(x => x.MovieId)
-                    .OrderByDescending(x => x.Sum(y => y.Note))
-                    .Take(10)
-                    .Select(r => new { MovieId = r.Key });
+                var bests = (from r in ctx.Review
+                             group r by r.MovieId into groupIds
+                             select new { groupIds.Key, Average = groupIds.Sum(x => x.Note) / groupIds.Count() })
+                             .OrderByDescending(x => x.Average)
+                             .Take(10)
+                             .ToList();
 
-                var worst = ctx.Review.GroupBy(x => x.MovieId)
-                    .OrderBy(x => x.Sum(y => y.Note))
-                    .Where(r => !bests.Any(y => y.MovieId == r.Key))
-                    .Take(10)
-                    .Select(r => new { MovieId = r.Key });
+                var worst = (from r in ctx.Review
+                             group r by r.MovieId into groupIds
+                             select new { groupIds.Key, Average = groupIds.Sum(x => x.Note) / groupIds.Count() })
+                             .ToList()
+                             .Where(r => !bests.Any(y => y.Key == r.Key))
+                             .OrderBy(x => x.Average)
+                             .Take(10)
+                             .ToList();
 
                 var listWorst = new List<Movie>();
                 foreach (var movie in worst)
-                    listWorst.Add(GetById(movie.MovieId));
+                    listWorst.Add(GetById(movie.Key));
 
                 return listWorst;
             }
